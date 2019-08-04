@@ -1,17 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace ScooterRental.Domain
 {
     public class Scooter
     {
-        public Scooter(int scooterId, bool rented, bool damaged)
+        public Scooter(int scooterId, bool rented, bool defected)
         {
             ScooterId = scooterId;
             Rented = rented;
-            Damaged = damaged;
+            Defected = defected;
         }
         public int ScooterId { get; }
-        public bool Rented { get; }
-        public bool Damaged { get; }
+        public bool Rented { get;  }
+        public bool Defected { get; }
+
     }
 }
