@@ -4,7 +4,13 @@ using ScooterRental.Domain;
 
 namespace ScooterRental.Application
 {
-    public class RentalService
+    public interface IRentalService
+    {
+        Guid RentScooter(Guid userId, int scooterId);
+        void EndRental(Guid userId, int scooterId);
+    }
+
+    public class RentalService : IRentalService
     {
         private readonly IScooterRepository _scooterRepository;
         private readonly IRentalRepository _rentalRepository;

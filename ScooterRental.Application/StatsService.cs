@@ -4,7 +4,14 @@ using ScooterRental.Domain;
 
 namespace ScooterRental.Application
 {
-    public class StatsService
+    public interface IStatsService
+    {
+        int GetNumberOfAvailableScooters();
+        List<(Scooter, TimeSpan)> GetUsageTime();
+        User[] GetTopTenUsers();
+    }
+
+    public class StatsService : IStatsService
     {
         private readonly IScooterRepository _scooterRepository;
         private readonly IUserRepository _userRepository;
@@ -22,7 +29,7 @@ namespace ScooterRental.Application
             return _scooterRepository.GetNumberOfAvailableScooters();
         }
 
-        public List<(Scooter, TimeSpan)> GetUsageTime(int scooterId)
+        public List<(Scooter, TimeSpan)> GetUsageTime()
         {
             return _rentalRepository.GetUsageTime();
         }

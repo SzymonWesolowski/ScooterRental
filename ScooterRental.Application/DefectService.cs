@@ -4,7 +4,13 @@ using ScooterRental.Domain;
 
 namespace ScooterRental.Application
 {
-    public class DefectService
+    public interface IDefectService
+    {
+        void ReportDefect(Guid userId, int scooterId, string defectDescription);
+        void DefectResolved(int scooterId);
+    }
+
+    public class DefectService : IDefectService
     {
         private readonly IRentalRepository _rentalRepository;
         private readonly IScooterRepository _scooterRepository;
