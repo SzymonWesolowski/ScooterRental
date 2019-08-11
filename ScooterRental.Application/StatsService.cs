@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ScooterRental.Domain;
 
 namespace ScooterRental.Application
@@ -21,9 +22,9 @@ namespace ScooterRental.Application
             return _scooterRepository.GetNumberOfAvailableScooters();
         }
 
-        public TimeSpan GetUsageTime(int scooterId)
+        public List<(Scooter, TimeSpan)> GetUsageTime(int scooterId)
         {
-            return _rentalRepository.GetUsageTime(scooterId);
+            return _rentalRepository.GetUsageTime();
         }
 
         public User[] GetTopTenUsers()

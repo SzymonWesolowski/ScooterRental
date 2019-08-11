@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ScooterRental.Domain;
 
 namespace ScooterRental.Application
@@ -8,6 +9,6 @@ namespace ScooterRental.Application
         void AddRental(Rental rental);
         void EndRental(Guid userId, int scooterId, DateTime now);
         bool UserCanReportDefect(Guid userId, int scooterId);
-        TimeSpan GetUsageTime(int scooterId);
+        List<(Scooter, TimeSpan)> GetUsageTime();
     }
 }

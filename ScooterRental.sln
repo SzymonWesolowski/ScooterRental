@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScooterRental.Domain", "ScooterRental.Domain\ScooterRental.Domain.csproj", "{2D66486E-A53E-4B29-B1CA-CD3E87FE62FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScooterRental.Application", "ScooterRental.Application\ScooterRental.Application.csproj", "{9A0C0F6A-7436-4C65-BB0A-A878853CCFE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScooterRental.Application", "ScooterRental.Application\ScooterRental.Application.csproj", "{9A0C0F6A-7436-4C65-BB0A-A878853CCFE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScooterRental.Persistence", "ScooterRental.Persistence\ScooterRental.Persistence.csproj", "{5E2E52F9-4B49-447B-8D77-DAEB0DC43D37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScooterRental.WebApi", "ScooterRental.WebApi\ScooterRental.WebApi.csproj", "{D2A94EBA-203C-4DBB-AB23-E27E7966550D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{9A0C0F6A-7436-4C65-BB0A-A878853CCFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A0C0F6A-7436-4C65-BB0A-A878853CCFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A0C0F6A-7436-4C65-BB0A-A878853CCFE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E2E52F9-4B49-447B-8D77-DAEB0DC43D37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E2E52F9-4B49-447B-8D77-DAEB0DC43D37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E2E52F9-4B49-447B-8D77-DAEB0DC43D37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E2E52F9-4B49-447B-8D77-DAEB0DC43D37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2A94EBA-203C-4DBB-AB23-E27E7966550D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2A94EBA-203C-4DBB-AB23-E27E7966550D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2A94EBA-203C-4DBB-AB23-E27E7966550D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2A94EBA-203C-4DBB-AB23-E27E7966550D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
