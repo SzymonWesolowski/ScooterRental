@@ -43,7 +43,6 @@ namespace ScooterRental.WebApi
             {
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
             app.UseMvc();
         }

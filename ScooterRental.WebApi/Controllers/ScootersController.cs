@@ -23,25 +23,27 @@ namespace ScooterRental.WebApi.Controllers
         }
 
         [HttpPost("{scooterId}/rental")]
-        public void RentScooter([FromQuery] int scooterId, [FromBody] Guid userId)
+        public ActionResult RentScooter([FromRoute] int scooterId, [FromBody] Guid userId)
         {
-            _rentalService.RentScooter(userId, scooterId);
+                _rentalService.RentScooter(userId, scooterId);
+                return Ok();
         }
 
         [HttpPatch("{scooterId}/rental")]
-        public void ReturnScooter([FromQuery] int scooterId, [FromBody] Guid userId)
+        public ActionResult ReturnScooter([FromRoute] int scooterId, [FromBody] Guid userId)
         {
             _rentalService.EndRental(userId, scooterId);
+            return Ok();
         }
 
         [HttpPost("{scooterId}/defect")]
-        public void ReportDefect([FromQuery] int scooterId, [FromBody] DefectDtoApi defectDto)
+        public void ReportDefect([FromRoute] int scooterId, [FromBody] DefectDtoApi defectDto)
         {
             _defectService.ReportDefect(defectDto.UserId, scooterId, defectDto.DefectDescription);
         }
 
         [HttpPatch("{scooterId}/defect")]
-        public void DefectResolved([FromQuery] int scooterId)
+        public void DefectResolved([FromRoute] int scooterId)
         {
             _defectService.DefectResolved(scooterId);
         }

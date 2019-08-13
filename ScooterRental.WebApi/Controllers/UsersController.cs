@@ -13,17 +13,11 @@ namespace ScooterRental.WebApi.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly IStatsService _statsService;
-
-        public UsersController(IStatsService statsService)
-        {
-            _statsService = statsService;
-        }
 
         [HttpGet]
-        public ActionResult<User> TopTenUsers()
+        public ActionResult<User> TopTenUsers([FromServices] IStatsService statsService)
         {
-            return Ok(_statsService.GetTopTenUsers());
+            return Ok(statsService.GetTopTenUsers());
         }
     }
 }

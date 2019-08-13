@@ -11,7 +11,7 @@ namespace ScooterRental.Persistence
         {
             using (var context = new RentalContext())
             {
-                var defectDto = modelToDto(defect);
+                var defectDto = ModelToDto(defect);
                 context.Defects.Add(defectDto);
                 context.SaveChanges();
             }
@@ -28,7 +28,7 @@ namespace ScooterRental.Persistence
             }
         }
 
-        private DefectDtoDb modelToDto(Defect defect)
+        private DefectDtoDb ModelToDto(Defect defect)
         {
             var defectDto = new DefectDtoDb
             {
