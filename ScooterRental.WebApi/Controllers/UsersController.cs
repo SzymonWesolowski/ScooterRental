@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ScooterRental.Application;
 using ScooterRental.Domain;
+using ScooterRental.WebApi.Dtos;
 
 namespace ScooterRental.WebApi.Controllers
 {
@@ -15,9 +13,25 @@ namespace ScooterRental.WebApi.Controllers
     {
 
         [HttpGet]
-        public ActionResult<User> TopTenUsers([FromServices] IStatsService statsService)
+        public ActionResult<List<UserDtoApi>> TopTenUsers([FromServices] IStatsService statsService)
         {
-            return Ok(statsService.GetTopTenUsers());
+            var users = statsService.GetTopTenUsers();
+            var usersDto = new  List<UserDtoApi>();
+            foreach (var user in users)
+            {
+                usersDto.Add(ModelToDto(user)); 
+            }
+            return Ok(usersDto);
+        }
+
+        private UserDtoApi ModelToDto(User user)
+        {
+            return new UserDtoApi()
+            {
+                UserId = user.UserId,
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
         }
     }
 }

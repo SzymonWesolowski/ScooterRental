@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using ScooterRental.Application;
+using ScooterRental.Domain;
 using ScooterRental.WebApi.Dtos;
 
 namespace ScooterRental.WebApi.Controllers
@@ -37,28 +38,36 @@ namespace ScooterRental.WebApi.Controllers
         }
 
         [HttpPost("{scooterId}/defect")]
-        public void ReportDefect([FromRoute] int scooterId, [FromBody] DefectDtoApi defectDto)
+        public ActionResult ReportDefect([FromRoute] int scooterId, [FromBody] DefectDtoApi defectDto)
         {
             _defectService.ReportDefect(defectDto.UserId, scooterId, defectDto.DefectDescription);
+            return Ok();
         }
 
         [HttpPatch("{scooterId}/defect")]
-        public void DefectResolved([FromRoute] int scooterId)
+        public ActionResult DefectResolved([FromRoute] int scooterId)
         {
             _defectService.DefectResolved(scooterId);
+            return Ok();
         }
 
         [HttpGet("status")]
-        public ActionResult<string> GetNumberOfAvailableScooters()
+        public ActionResult<int> GetNumberOfAvailableScooters()
         {
-            string available = _statsService.GetNumberOfAvailableScooters().ToString();
+            var available = _statsService.GetNumberOfAvailableScooters();
             return Ok(available);
         }
 
         [HttpGet("status/usageTime")]
-        public ActionResult<List<(ScooterDtoApi, TimeSpan)>> GetUsageTime()
+        public ActionResult<Dictionary<int, TimeSpan>> GetUsageTime()
         {
-            return Ok(_statsService.GetUsageTime());
+            var usageTimes = _statsService.GetUsageTime();
+            var usageTimesDto = new Dictionary<int, TimeSpan>();
+            foreach (var (scooter, timeSpan) in usageTimes)
+            {
+                usageTimesDto.Add(scooter.ScooterId, timeSpan);
+            }
+            return Ok(usageTimesDto);
         }
     }
 }
